@@ -19,12 +19,7 @@ spec:
           volumeMounts:
             - name: ebs-storage
               mountPath: /usr/local/apache2/htdocs/ebs
-            - name: efs-storage
-              mountPath: /usr/local/apache2/htdocs/efs
       volumes:
         - name: ebs-storage
           persistentVolumeClaim:
             claimName: ebs-pvc
-        - name: efs-storage
-          persistentVolumeClaim:
-            claimName: efs-pvc
