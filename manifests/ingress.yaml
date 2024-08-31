@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: web-app-ingress
-  namespace: web-app3
+  namespace: web-app4
   annotations:
     kubernetes.io/ingress.class: "alb"
 spec:
