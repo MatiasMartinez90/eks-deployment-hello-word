@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-deployment
+  namespace: web-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+        - name: web-app
+          image: httpd:latest # Imagen de ejemplo, puedes usar cualquier imagen de servidor web
+          volumeMounts:
+            - name: ebs-storage
+              mountPath: /usr/local/apache2/htdocs/ebs
+            - name: efs-storage
+              mountPath: /usr/local/apache2/htdocs/efs
+      volumes:
+        - name: ebs-storage
+          persistentVolumeClaim:
+            claimName: ebs-pvc
+        - name: efs-storage
+          persistentVolumeClaim:
+            claimName: efs-pvc
