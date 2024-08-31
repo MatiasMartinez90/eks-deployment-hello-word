@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: efs-pvc
-  namespace: web-app2
+  namespace: web-app3
 spec:
   accessModes:
     - ReadWriteMany
