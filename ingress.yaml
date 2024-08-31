@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-app-ingress
+  namespace: web-app
+  annotations:
+    kubernetes.io/ingress.class: "alb"
+spec:
+  rules:
+    - host: "web-app.example.com" # Cambia esto al dominio que desees usar
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web-app-service
+                port:
+                  number: 80
